@@ -1,0 +1,168 @@
+/// <reference types="cypress" />
+
+
+// const token = 'bxfPlMCJ7zJ9smZlDrDgkWb9oVNJzekGT8whYDM6CI4bXYHQvtxRNrAONgqShycZ'
+
+describe('Login Page with userid and password works correctly', () => {
+
+    it('Login & Dashboard Page functionalities are working', () => {
+        cy.visit('http://localhost:5000/login')
+        cy.get('[data-testid="userloginText"]').contains('Login')
+        cy.get('[data-testid="userLogin01"]').should('exist')
+        cy.get('[data-testid="password02"]').should('exist')
+        cy.get('[data-testid="password02"]').click()
+        cy.get('[data-testid="password02"]').click()
+        cy.get('[data-testid="userLogin01"]').find('input').type('anubhav')
+        cy.get('[data-testid="submitLogin"]').should('exist')
+        cy.get('[data-testid="submitLogin"]').click()
+        cy.get('[data-testid="password01"]').should('exist')
+        cy.get('[data-testid="password01"]').find('input').type('anubhav0706')
+        cy.get('[data-testid="submitLogin"]').click()
+
+        //dashboard page loads correctly
+        cy.url().should('eq', 'http://localhost:5000/')
+
+        // asserting every navbar components on the dashboard
+        cy.get('[data-testid="dashboard-navbar"]').should('exist')
+        cy.get('[data-testid="Plots-navbar"]').should('exist')
+        cy.get('[data-testid="Regions-navbar"]').should('exist')
+        cy.get('[data-testid="Fertigations-navbar"]').should('exist')
+        cy.get('[data-testid="Pesticide-navbar"]').should('exist')
+        cy.get('[data-testid="Chemicals-navbar"]').should('exist')
+        cy.get('[data-testid="Farm-navbar"]').should('exist')
+        cy.get('[data-testid="Analysis-navbar"]').should('exist')
+        cy.get('[data-testid="logout-navbar"]').should('exist')
+
+        // asserting functioning of nav-links 
+        cy.get('[data-testid="dashboard-navbar"]').click()
+        cy.get('[data-testid="Plots-navbar"]').click()
+        cy.go('back')
+        cy.get('[data-testid="Regions-navbar"]').click()
+        cy.go('back')
+        cy.get('[data-testid="Fertigations-navbar"]').click()
+        cy.go('back')
+        cy.get('[data-testid="Pesticide-navbar"]').click()
+        cy.go('back')
+        cy.get('[data-testid="Chemicals-navbar"]').click()
+        cy.go('back')
+        cy.get('[data-testid="Farm-navbar"]').click()
+        cy.go('back')
+        cy.get('[data-testid="Analysis-navbar"]').click()
+        cy.go('back')
+
+        // right side bar components exists
+        cy.get('[data-testid="dashboard-crop"]').should('exist')
+        cy.get('[data-testid="dashboard-crop"]').find('button').click()
+        cy.get('[ data-testid="dashboard-Pest"]').should('exist')
+        cy.get('[ data-testid="dashboard-Pest"]').find('button').click()
+        cy.get('[data-testid="dashboard-Environment"]').should('exist')
+        cy.get('[data-testid="dashboard-Environment"]').find('button').click()
+        cy.get('[data-testid="dashboard-Future-Predictions"]').should('exist')
+        cy.get('[data-testid="dashboard-Future-Predictions"]').find('button').click()
+        cy.get('[data-testid="dashboard-geo-Boundary"]').should('exist')
+        cy.get('[data-testid="dashboard-geo-Boundary"]').find('button').click()
+        cy.get('[data-testid="dashboard-geo-Boundary"]').find('button').click()
+
+        // all leftbar Links are existing 
+        cy.get('[data-testid="links-left"]').should('exist')
+
+        // all leftbar Links are working 
+        cy.get('[data-testid="links-left"]').eq(0).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(1).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(2).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(3).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(4).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(5).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(6).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(7).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(8).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(9).click()
+        cy.go('back')
+        cy.get('[data-testid="links-left"]').eq(10).click()
+        cy.go('back')
+
+        cy.get('[data-testid="logout-navbar"]').click();
+    })
+
+    it('Asserting all home pages functionalities', () => {
+        cy.visit('http://localhost:5000/login')
+        cy.get('[data-testid="userloginText"]').contains('Login')
+        cy.get('[data-testid="userLogin01"]').should('exist')
+        cy.get('[data-testid="password02"]').should('exist')
+        cy.get('[data-testid="password02"]').click()
+        cy.get('[data-testid="password02"]').click()
+        cy.get('[data-testid="userLogin01"]').find('input').type('anubhav')
+        cy.get('[data-testid="submitLogin"]').should('exist')
+        cy.get('[data-testid="submitLogin"]').click()
+        cy.get('[data-testid="password01"]').should('exist')
+        cy.get('[data-testid="password01"]').find('input').type('anubhav0706')
+        cy.get('[data-testid="submitLogin"]').click()
+
+        //dashboard page loads correctly
+        cy.url().should('eq', 'http://localhost:5000/')
+
+        // asserting every navbar components on the dashboard
+        cy.get('[data-testid="dashboard-navbar"]').should('exist')
+        cy.get('[data-testid="Plots-navbar"]').should('exist')
+        cy.get('[data-testid="Regions-navbar"]').should('exist')
+        cy.get('[data-testid="Fertigations-navbar"]').should('exist')
+        cy.get('[data-testid="Pesticide-navbar"]').should('exist')
+        cy.get('[data-testid="Chemicals-navbar"]').should('exist')
+        cy.get('[data-testid="Farm-navbar"]').should('exist')
+        cy.get('[data-testid="Analysis-navbar"]').should('exist')
+        cy.get('[data-testid="logout-navbar"]').should('exist')
+
+        // asserting functioninality of homepage 
+        cy.get('[data-testid="dashboard-navbar"]').click()
+        cy.get('[data-testid="Plots-navbar"]').click()
+        cy.url().should('eq', 'http://localhost:5000/home')
+        cy.get('div').find('input').eq(0).click().type('Crop{enter}')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('div').find('input').eq(0).click().type('Device{enter}')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('div').find('input').eq(0).click().type('Farm{enter}')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('div').find('input').eq(0).click().type('Location{enter}')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('div').find('input').eq(0).click().type('Farm user{enter}')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('div').find('input').eq(0).click().type('Inactive Plots{enter}')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('div').find('input').eq(0).click().type('Outlier Plots{enter}')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('div').find('input').eq(0).click().type('Sensors{enter}')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').should('exist')
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="switch-option-home"]').click()
+        cy.get('[data-testid="filter-selects-option-home"]').should('exist')
+        cy.get('[data-testid="filter-selects-option-home"]').eq(0).click()
+        cy.get('.MuiButtonBase-root').find('svg').eq(3).click()
+        cy.get('.MuiButtonBase-root').find('svg').eq(5).click()
+        cy.get('.MuiButtonBase-root').find('svg').eq(7).click()
+        cy.get('.MuiButtonBase-root').find('svg').eq(9).click()
+        cy.get('.MuiButtonBase-root').find('svg').eq(11).click()
+        cy.get('.MuiButtonBase-root').find('svg').eq(13).click()
+        cy.go('back')
+        cy.get('[data-testid="logout-navbar"]', { timeout: 60 * 1000 }).click();
+        // cy.get('[data-testid="select-option-home"]').should('exist')
+    })
+
+})
